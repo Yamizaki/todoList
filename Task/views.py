@@ -34,3 +34,16 @@ def done(request, task_id):
     print(taskDone.status)
     return HttpResponseRedirect(reverse("showTasks"))
 
+def pause(request, task_id):
+    taskDone = Task.objects.get(id=task_id)
+    taskDone.status="Pausado"
+    taskDone.save()
+    print(taskDone.status)
+    return HttpResponseRedirect(reverse("showTasks"))
+
+def started(request, task_id):
+    taskDone = Task.objects.get(id=task_id)
+    taskDone.status="Registrado"
+    taskDone.save()
+    print(taskDone.status)
+    return HttpResponseRedirect(reverse("showTasks"))

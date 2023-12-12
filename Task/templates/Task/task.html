@@ -13,16 +13,49 @@
 
 <section class="d-flex flex-wrap">
     {% for task in tasks  %}
-    <div class="bg-info w-25 py-3 px-3 mx-3 my-3 text-center d-flex flex-column">
-        <h2>{{task.title}}</h2>
-        <p class="text-start">{{task.description}}</p>
-    
-        <a href='{% url "done" task.id %}' class="btn btn-success w-50 mx-auto my-2">Completado</a>
-        <a href='{% url "delete" task.id %}' class="btn btn-danger w-50 mx-auto my-2">Cancelar</a>
-    
-       
-        <p>Termina en {{task.date_final}}</p>
-    </div>
+
+        {% if task.status == "Registrado" %}
+        <div class="bg-info w-25 py-3 px-3 mx-3 my-3 text-center d-flex flex-column position-relative">
+            <h2>{{task.title}}</h2>
+            <p class="text-start">{{task.description}}</p>
+            <a href='{% url "delete" task.id %}' class="btn btn-danger top-0 mx-2 my-2 end-0 position-absolute"> X </a>
+        
+            
+            <a href='{% url "done" task.id %}' class="btn btn-success w-50 mx-auto my-2">Completado</a>
+            <a href='{% url "pause" task.id %}' class="btn btn-success w-50 mx-auto my-2">Pausar</a>
+            
+        
+        
+            <p>Termina en {{task.date_final}}</p>
+        </div>
+
+        {% elif task.status == "Culminado" %}
+        <div class="bg-success w-25 py-3 px-3 mx-3 my-3 text-center d-flex flex-column position-relative">
+            <h2>{{task.title}}</h2>
+            <p class="text-start">{{task.description}}</p>
+            <a href='{% url "delete" task.id %}' class="btn btn-danger top-0 mx-2 my-2 end-0 position-absolute"> X </a>
+
+
+            <a href='{% url "started" task.id %}' class="btn btn-info w-50 mx-auto my-2">Aun no culminado</a>
+        
+        
+            <p>Termina en {{task.date_final}}</p>
+        </div>
+
+        {% elif task.status == "Pausado" %}
+        <div class="bg-danger w-25 py-3 px-3 mx-3 my-3 text-center d-flex flex-column position-relative">
+            <h2>{{task.title}}</h2>
+            <p class="text-start">{{task.description}}</p>
+            <a href='{% url "delete" task.id %}' class="btn btn-danger top-0 mx-2 my-2 end-0 position-absolute"> X </a>
+
+            <a href='{% url "started" task.id %}' class="btn btn-success w-50 mx-auto my-2">Continuar</a>
+            
+        
+        
+            <p>Termina en {{task.date_final}}</p>
+        </div>
+        {% endif %} 
+
     {% empty %} 
     
     <h2>Aún no hay tareas agregadas</h2>

@@ -5,7 +5,7 @@ class Task(models.Model):
     STATUS_CHOICES = (
         ('Registrado', 'REGISTRADO'),
         ('Culminado', 'CULMINADO'),
-        ('Cancelado', 'CANCELADO'),
+        ('Pausado', 'PAUSADO'),
     )
 
   
@@ -16,7 +16,7 @@ class Task(models.Model):
    
 
     date_created= models.DateField(auto_now_add=True)
-    date_final= models.DateField()
+    date_final= models.DateField(auto_now_add=True)
 
     def __str__(self):
         return self.title
