@@ -6,7 +6,16 @@ from django.http import HttpResponseRedirect
 
 def showTasks(request):
     Tasks = Task.objects.all()
-    context = {'tasks': Tasks}
+    Task_Done = len(Task.objects.filter(status="Culminado"))
+    Task_Paused = len(Task.objects.filter(status="Pausado"))
+    Task_Register = len(Task.objects.all())
+
+    context = {'tasks': Tasks,
+                'tasksDone': Task_Done,
+                'tasksPaused': Task_Paused,
+                'tasksRegister': Task_Register
+        }
+    
     return  render(request, 'Task/task.html', context)
 
 def add(request):
