@@ -7,11 +7,11 @@
 }
 
 header{
-    background-color: #4e4e4e;
+    background-color: #161A30;
     color: antiquewhite;
 }
 footer{
-    background-color: rgb(78, 78, 78);
+    background-color: #161A30;
     color: antiquewhite;
     bottom: 0;
 }
@@ -25,7 +25,7 @@ footer{
 main{
     padding-top:15px;
     padding-bottom:15px;
-    background-color: rgb(118, 196, 199);
+    background-color: #31304D;
     height: 86vb;
 }
 
