@@ -1,11 +1,13 @@
 from django.db import models
 
 # Create your models here.
+# inyeccion de datos 
+# instalar django-seed, agregarlo en setting django_seed, iniciar comando py manage.py seed Task --number=50
 class Task(models.Model):
     STATUS_CHOICES = (
-        ('Registrado', 'REGISTRADO'),
-        ('Culminado', 'CULMINADO'),
-        ('Pausado', 'PAUSADO'),
+        ('Registrado', 'Registrado'),
+        ('Culminado', 'Culminado'),
+        ('Pausado', 'Pausado'),
     )
 
   

@@ -31,6 +31,11 @@ def add(request):
         print(err)
         return HttpResponseRedirect(reverse("showTasks"))
 
+def deleteAll(request):
+    Tasks = Task.objects.all()
+    Tasks.delete()
+    return HttpResponseRedirect(reverse("showTasks"))
+
 def delete(request, task_id):
     taskDelete = Task.objects.filter(id=task_id)
     taskDelete.delete()

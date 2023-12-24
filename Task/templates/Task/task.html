@@ -9,14 +9,14 @@
 <h4>Total tareas: {{tasksRegister}}</h4>
 <h4>Tareas completadas: {{tasksDone}}</h4>
 <h4>Tareas pausadas: {{tasksPaused}}</h4>
-<button class="btn btn-success" id="AddTaskBtn">Agregar Tarea</button>
+<button class="btn btn-success ms-3 my-2" id="AddTaskBtn">Agregar Tarea</button>
+<button class="btn btn-danger ms-3 my-2" id="DelTaskBtn">Eliminar todo</button>
 </section>
 
 
 
-
     
-<section class="d-flex flex-wrap justify-content-center " >
+<section class="d-flex flex-wrap justify-content-center  " >
     
     {% for task in tasks  %}
    
@@ -53,7 +53,7 @@
         {% endif %} 
 
     {% empty %} 
-    <div class="bg-light py-3 px-3">
+    <div class="bg-light py-3 px-3 my-5 rond">
         <h2>Aún no hay tareas agregadas</h2>
         <form action='{% url "add" %}' method="post"   >
             {% csrf_token %}
@@ -92,12 +92,21 @@
                 <label for="date_final" class="form-label"> Fecha límite:</label>
                 <input  type="date" class="form-control" cols="30" rows="10" name="date_final" id="date_final">
             </div>
-            <button type="submit" class="btn btn-success ms-5 mt-3">Agregar</button>
-            <button  class="btn btn-danger ms-5 mt-3" id="cancelTask">Cancelar</button>
+            <button type="submit" class="btn btn-success mx-2 ms-5 mt-3">Agregar</button>
+            <button  class="btn btn-danger  mx-2 mt-3" id="cancelTask">Cancelar</button>
         </form>
     </div>
 </section>
 
+
+<!-- Mensaje preventivo de eliminacion -->
+<div class="p-4 d-none" id="DelTaskAnsBox"> 
+    <h3>¿Estás seguro de eliminar todo?</h3>
+    <div class="d-flex justify-content-evenly">
+    <a href='{% url "deleteAll"  %}' class=" btn btn-success px-4 mx-auto">Sí</a>
+    <button  class="btn btn-danger  mx-auto px-4"  id="noBtn">No</button>
+    </div>
+</div>
 
 </div>
 <!-- Maneja el agregado de tareas -->
@@ -118,10 +127,26 @@
             var contForm = document.getElementById('contForm');
            
             addTask.classList.add('d-none')
-           
+            
             }
         );
 
+        document.getElementById('DelTaskBtn').addEventListener('click',
+        function(){
+            var btnDeleteAll = document.getElementById('DelTaskAnsBox');
+            btnDeleteAll.classList.remove('d-none')
+           
+            var btnCancel = document.getElementById('noBtn');
+            btn
+            }
+        );
+
+        document.getElementById('noBtn').addEventListener('click',
+        function(){
+            var btnDeleteAll = document.getElementById('DelTaskAnsBox');
+            btnDeleteAll.classList.add('d-none')
+            }
+        );
         // document.getElementById('Culminado').addEventListener('click',
         // function(){
         //     var tareaCulminada = document.getElementById('main');

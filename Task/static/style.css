@@ -6,7 +6,9 @@
     
 }
 
-
+body{
+    background-color: #31304D;
+}
 
 header{
     background-color: #161A30;
@@ -16,9 +18,11 @@ footer{
     background-color: #161A30;
     color: antiquewhite;
     
-    bottom: 0;
+    width: 100%;
+    
     
 }
+
 
 .task-inf{
     color: antiquewhite;
@@ -32,7 +36,8 @@ footer{
 main{
     padding-top:15px;
     padding-bottom:15px;
-    background-color: #31304D;
+    
+   
     
 }
 
@@ -81,9 +86,21 @@ main{
 }
 
 .formAdd2{
-    background-color: #83aaf1;
+    color: antiquewhite;
+    background-color: #161A30;
     border-radius: 2%;
-    position: relative;
+    
+    transform: translate(calc(-50%) , calc(-50%)); 
+    top:50%;
+    left: 50%;
+    transition: 1s;
+}
+
+#DelTaskAnsBox{
+    color: antiquewhite;
+    background-color: #161A30;
+    border-radius: 2%;
+    position: absolute;
     transform: translate(calc(-50%) , calc(-50%)); 
     top:50%;
     left: 50%;
