@@ -6,6 +6,8 @@
     
 }
 
+
+
 header{
     background-color: #161A30;
     color: antiquewhite;
@@ -13,9 +15,14 @@ header{
 footer{
     background-color: #161A30;
     color: antiquewhite;
+    
     bottom: 0;
+    
 }
 
+.task-inf{
+    color: antiquewhite;
+}
 .card{
     box-shadow: 13px 12px 17px -2px rgba(0,0,0,0.27);
 -webkit-box-shadow: 13px 12px 17px -2px rgba(0,0,0,0.27);
@@ -26,17 +33,44 @@ main{
     padding-top:15px;
     padding-bottom:15px;
     background-color: #31304D;
-    height: 86vb;
+    
 }
 
 .card-registrado{
     background-color: #F0ECE5;
+    width: 20%;
 }
 .card-pausado{
     background-color: rgb(240, 70, 70);
+    width: 20%;
 }
 .card-culminado{
     background-color: #B6BBC4;
+    width: 20%;
+}
+
+@media screen and (max-width: 1317px) {
+    .card-registrado {
+      width: 40%;
+    }
+    .card-pausado{
+        width: 40%;
+    }
+    .card-culminado{
+        width: 40%;
+    }
+  }
+
+@media screen and (max-width: 875px) {
+.card-registrado {
+    width: 100%;
+}
+.card-pausado{
+    width: 100%;
+}
+.card-culminado{
+    width: 100%;
+}
 }
 
 .formAdd{
@@ -49,8 +83,11 @@ main{
 .formAdd2{
     background-color: #83aaf1;
     border-radius: 2%;
-    transform: translate(210%, 0);
-    transition: 1s ease-in;
-  
+    position: relative;
+    transform: translate(calc(-50%) , calc(-50%)); 
+    top:50%;
+    left: 50%;
+    transition: 1s;
 }
+
 

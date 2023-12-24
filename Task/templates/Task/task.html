@@ -4,7 +4,8 @@
 {% block content %}
     
 <div class="" id="main">
-<section class="ms-3">
+
+<section class="ms-3 task-inf">
 <h4>Total tareas: {{tasksRegister}}</h4>
 <h4>Tareas completadas: {{tasksDone}}</h4>
 <h4>Tareas pausadas: {{tasksPaused}}</h4>
@@ -13,58 +14,45 @@
 
 
 
-<div class="d-flex">
+
     
-<section class="d-flex flex-wrap w-100 h-100 justify-content-center " >
+<section class="d-flex flex-wrap justify-content-center " >
     
     {% for task in tasks  %}
    
         
         {% if task.status == "Registrado" %}
-        <div class="card-registrado w-25 py-3 px-3 mx-3 my-3 text-center d-flex flex-column position-relative card">
+        <div class="card-registrado  py-3 px-3 mx-3 my-3 text-center d-flex flex-column position-relative card">
             <h2>{{task.title}}</h2>
             <p class="text-start">{{task.description}}</p>
             <a href='{% url "delete" task.id %}' class="btn btn-danger top-0 mx-2 my-2 end-0 position-absolute"> X </a>
-        
-            
             <a href='{% url "done" task.id %}' class="btn btn-success w-50 mx-auto my-2" id="Completado">Completado</a>
             <a href='{% url "pause" task.id %}' class="btn btn-danger w-50 mx-auto my-2">Pausar</a>
-            
-        
-        
-            <p>Termina en {{task.date_final}}</p>
+            <p>Termina el {{task.date_final}}</p>
         </div>
         
 
         {% elif task.status == "Culminado" %}
-        <div class="card-culminado w-25 py-3 px-3 mx-3 my-3 text-center d-flex flex-column position-relative card">
+        <div class="card-culminado  py-3 px-3 mx-3 my-3 text-center d-flex flex-column position-relative card">
             <h2>{{task.title}}</h2>
             <p class="text-start">{{task.description}}</p>
             <a href='{% url "delete" task.id %}' class="btn btn-danger top-0 mx-2 my-2 end-0 position-absolute"> X </a>
-
-
             <a href='{% url "started" task.id %}' class="btn btn-info w-50 mx-auto my-2">Aun no culminado</a>
-        
-        
-            <p>Termina en {{task.date_final}}</p>
+            <p>Termina el {{task.date_final}}</p>
         </div>
 
+
         {% elif task.status == "Pausado" %}
-        <div class="card-pausado w-25 py-3 px-3 mx-3 my-3 text-center d-flex flex-column position-relative card">
+        <div class="card-pausado  py-3 px-3 mx-3 my-3 text-center d-flex flex-column position-relative card">
             <h2>{{task.title}}</h2>
             <p class="text-start">{{task.description}}</p>
             <a href='{% url "delete" task.id %}' class="btn btn-danger top-0 mx-2 my-2 end-0 position-absolute"> X </a>
-
             <a href='{% url "started" task.id %}' class="btn btn-success w-50 mx-auto my-2">Continuar</a>
-            
-            <p>Termina en {{task.date_final}}</p>
+            <p>Termina el {{task.date_final}}</p>
         </div>
         {% endif %} 
 
     {% empty %} 
-    
-    
- 
     <div class="bg-light py-3 px-3">
         <h2>Aún no hay tareas agregadas</h2>
         <form action='{% url "add" %}' method="post"   >
@@ -77,17 +65,14 @@
                 <label for="description" class="form-label"> Descripción:</label>
                 <textarea  class="form-control" cols="30" rows="10" name="description" id="description" required></textarea> 
             </div>
-
             <div>
                 <label for="date_final" class="form-label"> Fecha límite:</label>
                 <input  type="date" class="form-control" cols="30" rows="10" name="date_final" id="date_final">
             </div>
-            
             <button type="submit" class="btn btn-success ms-5 mt-3 ">Agregar</button>
         </form>
     </div>
-    
-    {% endfor %}
+    {% endfor %}  
 </section >
 
 
@@ -103,19 +88,17 @@
                 <label for="description" class="form-label"> Descripción:</label>
                 <textarea  class="form-control" cols="30" rows="10" name="description" id="description" required></textarea> 
             </div>
-
             <div>
                 <label for="date_final" class="form-label"> Fecha límite:</label>
                 <input  type="date" class="form-control" cols="30" rows="10" name="date_final" id="date_final">
             </div>
-            
             <button type="submit" class="btn btn-success ms-5 mt-3">Agregar</button>
             <button  class="btn btn-danger ms-5 mt-3" id="cancelTask">Cancelar</button>
         </form>
     </div>
 </section>
 
-</div>
+
 </div>
 <!-- Maneja el agregado de tareas -->
     <script>
@@ -133,6 +116,7 @@
         function(){
             var addTask = document.getElementById('AddTask');
             var contForm = document.getElementById('contForm');
+           
             addTask.classList.add('d-none')
            
             }
