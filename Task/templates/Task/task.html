@@ -16,7 +16,7 @@
 
 
     
-<section class="d-flex flex-wrap justify-content-center  " >
+<section class="d-flex flex-wrap justify-content-center " id="allTask" >
     
     {% for task in tasks  %}
    
@@ -53,7 +53,7 @@
         {% endif %} 
 
     {% empty %} 
-    <div class="bg-light py-3 px-3 my-5 rond">
+    <div class="bg-light py-3 px-3 my-5 rounded-3 ">
         <h2>Aún no hay tareas agregadas</h2>
         <form action='{% url "add" %}' method="post"   >
             {% csrf_token %}
